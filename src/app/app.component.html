@@ -1,5 +1,41 @@
+<h1>Welcome, {{userName}}!</h1>
+
+<form class="form-group">
+  <input [(ngModel)]="userName" class="form-control" type="text" name="user">
+</form>
+
 <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
 <h3>{{currentTask}}</h3>
 <ul>
-  <li *ngFor="let currentTask of tasks">{{currentTask.description}}</li>
-</ul>
+  <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks; let i = index">{{i + 1}}: {{currentTask.description}} <button (click)="editTask(currentTask)">Edit!</button> <button (click)="deleteToDo(todoIndex)">X</button></li></ul>
+
+  <h2>Add ToDo</h2>
+  <form (submit)='addToDo(toDo.value, priority.value)' class='form-group'>
+    <div class='form-control'>
+      <label for="todo">Item:</label>
+      <input type="text" #toDo>
+    </div>
+    <div class='form-control'>
+      <label for="priority">Priority:</label>
+      <input type="number" #priority>   
+    </div>
+    <button>Add!</button>     
+  </form>
+
+
+  
+
+<div *ngIf="selectedTask"class="form-group">
+  <h3>{{selectedTask.description}}</h3>
+  <p>Task Complete? {{selectedTask.done}}</p>
+  <h3>Edit Task</h3>
+  <label>Enter Task Description:</label>
+  <input [(ngModel)]="selectedTask.description" class="form-control">
+  <label>Enter Task Priority (1-4):</label>
+  <br>
+  <input type="radio" [(ngModel)]="selectedTask.priority" [value]="1">1 (Low Priority)<br>
+  <input type="radio" [(ngModel)]="selectedTask.priority" [value]="2">2 (Medium Priority)<br>
+  <input type="radio" [(ngModel)]="selectedTask.priority" [value]="3">3 (High Priority)<br>
+  <input type="radio" [(ngModel)]="selectedTask.priority" [value]="4">4 (REALLY High Priority)
+  <button (click)="finishedEditing()">Done</button>
+</div>
