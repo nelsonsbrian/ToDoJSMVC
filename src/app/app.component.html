@@ -1,17 +1,17 @@
-<h1>Welcome, {{userName}}!</h1>
+<h1>Welcome, {{userName}}! Time is {{currentTime}}</h1>
 <form class="form-group">
   <input [(ngModel)]="userName" class="form-control" type="text" name="user">
 </form>
 
 <h2>Add ToDo</h2>
 <form (submit)='addToDo(toDo.value, priority.value, dueDays.value)' class='form-group'>
-    <label for="todo">Item:</label>
-    <input class="form-control" type="text" #toDo > <br>
-    <label for="priority">Priority:</label>
-    <input class="form-control" type="number" #priority> <br>
-    <label for="dueDays">Due in Days:</label>
-    <input class="form-control" type="number" #dueDays> <br>
-    <button>Add!</button>
+  <label for="todo">Item:</label>
+  <input class="form-control" type="text" #toDo> <br>
+  <label for="priority">Priority:</label>
+  <input class="form-control" type="number" #priority> <br>
+  <label for="dueDays">Due in Days:</label>
+  <input class="form-control" type="number" #dueDays> <br>
+  <button>Add!</button>
 </form><br>
 
 <div *ngIf="selectedTask" class="form-group">
@@ -33,14 +33,9 @@
 <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
 <h3>{{currentTask}}</h3>
 
-  <div [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks; let i = index">
-    {{i + 1}}: {{currentTask.description}} <br>
-    Created: {{currentTask.dateMessage}} <br>
-    Due: {{currentTask.dueMessage}} <br>
-    <button (click)="editTask(currentTask)">Edit!</button> <button (click)="deleteToDo(todoIndex)">X</button>
-  </div>
-
-
-
-
-
+<div [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks; let i = index">
+  {{i + 1}}: {{currentTask.description}} <br>
+  Created: {{currentTask.dateMessage}} <br>
+  Due: {{currentTask.dueMessage}} <br>
+  <button (click)="editTask(currentTask)">Edit!</button> <button (click)="deleteToDo(todoIndex)">X</button>
+</div>

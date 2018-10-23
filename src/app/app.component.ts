@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from './models/task.model';
+// import { DateComponent } from './models/time.model';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,14 @@ import { Task } from './models/task.model';
 })
 export class AppComponent {
   title = 'app';
-  currentFocus: string = 'Angular Homework';  
+  currentFocus: string = 'Angular Homework';
+
   currentTime = new Date();
   month: number = this.currentTime.getMonth() + 1;
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();  
   tasks: Task[] = [
+    new Task('track time', 3, 5),
     new Task('Finish weekend Angular homework for Epicodus course', 3, 5),
     new Task('Begin brainstorming possible JavaScript group projects', 2, 7),
     new Task('Add README file to last few Angular repos on GitHub', 4, 14),
@@ -52,4 +55,5 @@ export class AppComponent {
     }
   }
 }
+
 

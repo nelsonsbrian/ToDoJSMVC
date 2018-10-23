@@ -11,6 +11,10 @@ export class Task {
     this.dateMessage = this.createdDate.toLocaleDateString() + ' ' + this.createdDate.toLocaleTimeString();
     this.dueMessage = `due in ${this.daysBetween()} days  `;
     console.log(this);
+
+    setInterval(() => {
+      
+    }, 1000);
   }
 
   addDays(days: number) {
